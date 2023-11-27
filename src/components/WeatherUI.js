@@ -28,7 +28,7 @@ function WeatherUI({ countryData }) {
       {/* More country weather info */}
       <div className="flex flex-row py-5 gap-3 w-72">
         <div className="flex flex-col justify-center items-center w-full">
-          <div>
+          <div className="bg-black rounded">
             <img src={feelIcon} alt="Feels-like-icon" />
           </div>
           <div className="flex justify-center flex-col items-center mt-3 uppercase">
@@ -37,7 +37,7 @@ function WeatherUI({ countryData }) {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center w-full">
-          <div>
+          <div className="bg-black rounded">
             <img src={humidIcon} alt="Humidity-icon" />
           </div>
           <div className="flex justify-center flex-col items-center mt-3 uppercase">
@@ -46,7 +46,7 @@ function WeatherUI({ countryData }) {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center w-full">
-          <div>
+          <div className="bg-black rounded">
             <img src={speedIcon} alt="Wind-speed-icon" />
           </div>
           <div className="flex justify-center flex-col items-center mt-3 uppercase">

@@ -9,32 +9,28 @@ body {
 }
 /* Loader */
 .loader {
-    width: 60px;
-    aspect-ratio: 1;
-    display: grid;
-  }
-  .loader:before,
-  .loader:after {
-    content: "";
-    grid-area: 1/1;
-    color:rgb(176, 97, 37);
-    animation: l19 1.5s infinite linear;
-  }
-  .loader:before {
-    margin: 5px 20px;
-    background:currentColor;
-  }
-  .loader:after {
-    border: solid;
-    border-width: 5px 20px;
-    --s:0;
-  }
-  @keyframes l19 {
-    0%      {transform: perspective(100px) rotate3d(1,var(--s,1),0,0)     } 
-    25%     {transform: perspective(100px) rotate3d(1,var(--s,1),0,90deg) }
-    25.01%  {transform: perspective(100px) rotate3d(1,var(--s,1),0,90deg) } 
-    40%,60% {transform: perspective(100px) rotate3d(1,var(--s,1),0,180deg)} 
-    75%     {transform: perspective(100px) rotate3d(1,var(--s,1),0,270deg)}
-    75.01%  {transform: perspective(100px) rotate3d(1,var(--s,1),0,270deg)} 
-    90%,100%{transform: perspective(100px) rotate3d(1,var(--s,1),0,360deg)}
-  }
+  width: 108px;
+  height: 60px;
+  color: #269af2;
+  --c: radial-gradient(farthest-side,currentColor 96%,#0000);
+  background: 
+    var(--c) 100% 100% /30% 60%,
+    var(--c) 70%  0    /50% 100%,
+    var(--c) 0    100% /36% 68%,
+    var(--c) 27%  18%  /26% 40%,
+    linear-gradient(currentColor 0 0) bottom/67% 58%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 100;
+  inset: 0;
+  background: inherit;
+  opacity: 0.4;
+  animation: l7 1s infinite;
+}
+@keyframes l7 {
+  to {transform:scale(1.8);opacity:0}
+}
