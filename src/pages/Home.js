@@ -60,6 +60,10 @@ function Home() {
           countryInfo &&
           countryInfo.name && (
             <div>
+              <p className="py-3 font-bold">
+                Dear user, this web app is still in development and will be
+                updated soon. Thank you for you time.
+              </p>
               <h1>Country Name: {countryInfo.name}</h1>
               <p>Timezone: {countryInfo.timezone}</p>
               <p>Weather status: {countryInfo.weather[0].main}</p>
