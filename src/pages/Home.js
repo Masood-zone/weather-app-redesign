@@ -50,8 +50,7 @@ function Home() {
           <img src={emptyIcon} alt="Empty Icon" className="h-full" />
           {countryInfo.includes("Request failed") && (
             <p className="text-center text-red-600 text-lg">
-              Opps! <br />
-              {countryInfo}!
+              City name cannot be found!
             </p>
           )}
         </div>
