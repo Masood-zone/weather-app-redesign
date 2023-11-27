@@ -58,7 +58,7 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <h1 className="text-sm text-center ml-2 font-medium md:text-lg">
+        <h1 className="text-base sm:text-md text-center ml-2 font-medium md:text-lg">
           Kirito Weather Checker
         </h1>
       </main>
