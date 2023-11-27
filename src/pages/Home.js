@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import searchIcon from "../assets/svgs/search-icon.svg";
 import emptyIcon from "../assets/svgs/empty.svg";
 import getCityWeather from "../root/getCityWeatherFunc";
+import WeatherUI from "../components/WeatherUI";
 
 function Home() {
   const [query, setQuery] = useState("");
@@ -65,27 +66,7 @@ function Home() {
           countryInfo &&
           countryInfo.name && (
             <div>
-              <p className="py-3 font-bold">
-                Dear user, this web app is still in development and will be
-                updated soon. Thank you for you time.
-                <button className="underline" onClick={() => handleReset()}>
-                  Go back
-                </button>
-              </p>
-              <h1>Country Name: {countryInfo.name}</h1>
-              <p>Timezone: {countryInfo.timezone}</p>
-              <p>Weather status: {countryInfo.weather[0].main}</p>
-              <img
-                src={`https://openweathermap.org/img/wn/${countryInfo.weather[0].icon}@2x.png`}
-                alt="Weather Icon"
-              />
-              <p>Description: {countryInfo.weather[0].description}</p>
-              <p>Cloudiness: {countryInfo.clouds.all}%</p>
-              <p>Visibilty: {countryInfo.visibility}Km</p>
-              <p>Temperature: {countryInfo.main.temp}°C</p>
-              <p>Feels like: {countryInfo.main.feels_like}°C</p>
-              <p>Humidity: {countryInfo.main.humidity}%</p>
-              <p>Wind speed: {countryInfo.wind.speed}m/h</p>
+              <WeatherUI countryData={countryInfo} />
             </div>
           )
         )}
