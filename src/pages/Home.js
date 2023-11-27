@@ -6,25 +6,25 @@ import getCityWeather from "../root/getCityWeatherFunc";
 function Home() {
   const [query, setQuery] = useState("");
   const [countryInfo, setCountryInfo] = useState([]);
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(query);
-    const data = await getCityWeather(query);
-    if (!data.ok) {
-      setError(data.message);
+    setLoading(true);
+    try {
+      const data = await getCityWeather(query);
+      setCountryInfo(data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
     }
-    setCountryInfo(data);
     setQuery("");
   };
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col items-center justify-center">
       {/* Form for city input */}
       <div className="mx-2">
-        <span className="text-base-content">
-          Search for any city to get it's weather.
-        </span>
         <form className="flex gap-2 py-2" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -33,17 +33,51 @@ function Home() {
             placeholder="Type city name here..."
             className="input input-bordered w-full max-w-xs"
           />
-          <button type="submit" className="btn btn-ghost bg-base-200">
+          <button type="submit" className="btn btn-ghost bg-orange-400">
             <img src={searchIcon} alt="seatch-icon" />
           </button>
         </form>
       </div>
       {/* Empty svg before search */}
-      <div className="border-2">
-        <img src={emptyIcon} alt="Empty Icon" />
-      </div>
+      {!loading && !countryInfo.name && (
+        <div className=" w-96 h-96 mx-auto">
+          <img src={emptyIcon} alt="Empty Icon" className="h-full" />
+          {countryInfo.includes("Request failed") && (
+            <p className="text-center text-red-600 text-lg">
+              Opps! <br />
+              {countryInfo}!
+            </p>
+          )}
+        </div>
+      )}
       {/* After search */}
-      <div className=""></div>
+      <div className="">
+        {loading ? (
+          <div className="flex items-center justify-center my-10">
+            <div className="loader"></div>
+          </div>
+        ) : (
+          countryInfo &&
+          countryInfo.name && (
+            <div>
+              <h1>Country Name: {countryInfo.name}</h1>
+              <p>Timezone: {countryInfo.timezone}</p>
+              <p>Weather status: {countryInfo.weather[0].main}</p>
+              <img
+                src={`https://openweathermap.org/img/wn/${countryInfo.weather[0].icon}@2x.png`}
+                alt="Weather Icon"
+              />
+              <p>Description: {countryInfo.weather[0].description}</p>
+              <p>Cloudiness: {countryInfo.clouds.all}%</p>
+              <p>Visibilty: {countryInfo.visibility}Km</p>
+              <p>Temperature: {countryInfo.main.temp}°C</p>
+              <p>Feels like: {countryInfo.main.feels_like}°C</p>
+              <p>Humidity: {countryInfo.main.humidity}%</p>
+              <p>Wind speed: {countryInfo.wind.speed}m/h</p>
+            </div>
+          )
+        )}
+      </div>
     </div>
   );
 }

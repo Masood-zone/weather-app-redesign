@@ -10,5 +10,6 @@ export default async function getCityWeather(country) {
     return response.data;
   } catch (error) {
     console.log(error.message);
+    return error.message;
   }
 }

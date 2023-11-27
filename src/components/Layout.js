@@ -4,9 +4,11 @@ import Home from "../pages/Home";
 
 function Layout() {
   return (
-    <div className="max-w-lg h-screen  mx-auto">
+    <div className=" h-screen">
       <Navbar />
-      <Home />
+      <div className="max-w-xl mx-auto">
+        <Home />
+      </div>
     </div>
   );
 }
