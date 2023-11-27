@@ -21,6 +21,11 @@ function Home() {
     }
     setQuery("");
   };
+
+  const handleReset = () => {
+    setLoading(false);
+    setCountryInfo([]);
+  };
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Form for city input */}
@@ -63,6 +68,9 @@ function Home() {
               <p className="py-3 font-bold">
                 Dear user, this web app is still in development and will be
                 updated soon. Thank you for you time.
+                <button className="underline" onClick={() => handleReset()}>
+                  Go back
+                </button>
               </p>
               <h1>Country Name: {countryInfo.name}</h1>
               <p>Timezone: {countryInfo.timezone}</p>

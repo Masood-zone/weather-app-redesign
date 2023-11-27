@@ -15,9 +15,6 @@ function Navbar() {
           </div>
           <ul className="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-52">
             <li className="border-b-2">
-              <a href="/">Home</a>
-            </li>
-            <li className="border-b-2">
               <a href="#!">About</a>
             </li>
             {/* Theme changer here */}
